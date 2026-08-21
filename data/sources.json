@@ -1,0 +1,186 @@
+[
+  {
+    "id": "discover_fiji",
+    "title": "Discover Fiji",
+    "category": "general",
+    "source": "Tourism Fiji",
+    "file": "general.pdf",
+    "url": "https://www.fiji.travel/things-to-know/destination-guide/discover-fiji"
+  },
+  {
+    "id": "common_mistakes",
+    "title": "Common Mistakes First-Time Visitors Make",
+    "category": "general",
+    "source": "Tourism Fiji",
+    "file": "common_mistakes.pdf",
+    "url": "https://www.fiji.travel/things-to-know/essential-travel-tips/common-mistakes-first-time-visitors-make"
+  },
+  {
+    "id": "climate_fiji",
+    "title": "Climate in Fiji",
+    "category": "weather",
+    "source": "Tourism Fiji",
+    "file": "climate.pdf",
+    "url": "https://www.fiji.travel/things-to-know/weather-and-climate-in-fiji/climate-in-fiji"
+  },
+  {
+    "id": "weather_fiji",
+    "title": "Weather in Fiji",
+    "category": "weather",
+    "source": "Tourism Fiji",
+    "file": "weather.pdf",
+    "url": "https://www.fiji.travel/things-to-know/weather-and-climate-in-fiji/weather-in-fiji"
+  },
+  {
+    "id": "culture_language",
+    "title": "Culture, Language & Religions of Fiji",
+    "category": "culture",
+    "source": "Tourism Fiji",
+    "file": "culture_language.pdf",
+    "url": "https://www.fiji.travel/things-to-know/destination-guide/culture-language-region-of-fiji"
+  },
+  {
+    "id": "village_etiquette",
+    "title": "Fijian Village Visit Etiquette",
+    "category": "culture",
+    "source": "Tourism Fiji",
+    "file": "village_etiquette.pdf",
+    "url": "https://www.fiji.travel/things-to-do/arts/10-etiquette-tips-to-remember-when-you-visit-fiji"
+  },
+  {
+    "id": "land_travel",
+    "title": "Exploring Fiji by Land",
+    "category": "transport",
+    "source": "Tourism Fiji",
+    "file": "land_travel.pdf",
+    "url": "https://www.fiji.travel/things-to-know/getting-around/land-airport-transfers"
+  },
+  {
+    "id": "south_sea_cruises_transfers",
+    "title": "Fiji Resort Transfers",
+    "category": "transport",
+    "source": "South Sea Cruises",
+    "file": "south_sea_cruises.pdf",
+    "url": "https://southseacruisesfiji.com/resort-transfers/"
+  },
+  {
+    "id": "nadi_things_to_do",
+    "title": "Top Things to Do in Nadi",
+    "category": "nadi",
+    "source": "Tourism Fiji",
+    "file": "nadi_ttd.pdf",
+    "url": "https://www.fiji.travel/places-to-go/nadi/locations/top-things-to-do-in-nadi"
+  },
+  {
+    "id": "nadi_guide",
+    "title": "Nadi - The Perfect Base to Explore Fiji",
+    "category": "nadi",
+    "source": "Tourism Fiji",
+    "file": "nadi_guide.pdf",
+    "url": "https://www.fiji.travel/places-to-go/nadi/locations/nadi-the-perfect-base-to-explore-fiji"
+  },
+  {
+    "id": "nadi_island_day_trips",
+    "title": "Day Trips from Nadi",
+    "category": "nadi",
+    "source": "Tourism Fiji",
+    "file": "nadi_island_day_trips.pdf",
+    "url": "https://www.fiji.travel/places-to-go/nadi/locations/day-trips-from-nadi"
+  },
+  {
+    "id": "mamanuca_things_to_do",
+    "title": "Top Things to Do in the Mamanuca Islands",
+    "category": "mamanuca",
+    "source": "Tourism Fiji",
+    "file": "mamanuca_ttd.pdf",
+    "url": "https://www.fiji.travel/places-to-go/mamanuca-islands/locations/top-things-to-do-in-the-mamanuca-islands"
+  },
+  {
+    "id": "yasawa_guide",
+    "title": "Ultimate Guide to the Yasawa Islands",
+    "category": "yasawa",
+    "source": "Tourism Fiji",
+    "file": "yasawa_guide.pdf",
+    "url": "https://www.fiji.travel/places-to-go/yasawa-islands/locations/ultimate-guide-to-the-yasawa-islands"
+  },
+  {
+    "id": "yasawa_things_to_do",
+    "title": "Top Things to Do in the Yasawa Islands",
+    "category": "yasawa",
+    "source": "Tourism Fiji",
+    "file": "yasawa_ttd.pdf",
+    "url": "https://www.fiji.travel/places-to-go/yasawa-islands/locations/top-things-to-do-in-yasawa-islands"
+  },
+  {
+    "id": "yasawa_island_hopping",
+    "title": "Go Island-Hopping in the Yasawa Islands",
+    "category": "yasawa",
+    "source": "Tourism Fiji",
+    "file": "yasawa_island_hopping.pdf",
+    "url": "https://www.fiji.travel/places-to-go/yasawa-islands/locations/go-island-hopping-in-yasawa-islands"
+  },
+  {
+    "id": "coral_coast_things_to_do",
+    "title": "Top Things to Do on the Coral Coast",
+    "category": "coral_coast",
+    "source": "Tourism Fiji",
+    "file": "coral_coast_ttd.pdf",
+    "url": "https://www.fiji.travel/places-to-go/coral-coast/locations/top-things-to-do-in-coral-coast"
+  },
+  {
+    "id": "ultimate_snorkelling_guide",
+    "title": "The Ultimate Fiji Snorkelling Guide",
+    "category": "snorkelling",
+    "source": "Tourism Fiji",
+    "file": "snorkelling.pdf",
+    "url": "https://www.fiji.travel/things-to-do/snorkelling/the-ultimate-fiji-snorkelling-guide"
+  },
+  {
+    "id": "reef_creatures",
+    "title": "Snorkel with Fascinating Fiji Reef Creatures",
+    "category": "snorkelling",
+    "source": "Tourism Fiji",
+    "file": "more_snorkelling.pdf",
+    "url": "https://www.fiji.travel/things-to-do/diving/snorkel-with-fascinating-fiji-reef-creatures"
+  },
+  {
+    "id": "learn_to_dive",
+    "title": "Learn to Dive in Fiji",
+    "category": "diving",
+    "source": "Tourism Fiji",
+    "file": "learn_dive.pdf",
+    "url": "https://www.fiji.travel/things-to-do/diving/learn-to-dive-in-fiji"
+  },
+  {
+    "id": "marine_life_encounters",
+    "title": "Fiji Diving - Marine Life Encounters",
+    "category": "marine_life",
+    "source": "Tourism Fiji",
+    "file": "marine_life.pdf",
+    "url": "https://www.fiji.travel/things-to-do/diving/diving-fiji-marine-life-encounters"
+  },
+  {
+    "id": "underwater_fiji",
+    "title": "Experience Fiji Under the Sea",
+    "category": "marine_life",
+    "source": "Tourism Fiji",
+    "file": "underwater_info.pdf",
+    "url": "https://www.fiji.travel/things-to-do/diving/experience-fiji-under-the-sea"
+  },
+  {
+    "id": "visa_exempt_countries",
+    "title": "Visa Exempted Countries",
+    "category": "entry",
+    "source": "Fiji Immigration",
+    "file": "visa_countries.pdf",
+    "url": "https://www.immigration.gov.fj/visa-exempted-countries/"
+  },
+  {
+    "id": "fiji_travel_safety",
+    "title": "Fiji Travel Advice",
+    "category": "safety",
+    "source": "Smartraveller",
+    "file": "travel-safety.pdf",
+    "url": "https://www.smartraveller.gov.au/destinations/pacific/fiji"
+  }
+]
