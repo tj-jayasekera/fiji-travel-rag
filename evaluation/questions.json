@@ -1,0 +1,462 @@
+[
+  {
+    "id": "q001",
+    "question": "Do Australian tourists need a visa to visit Fiji for less than four months?",
+    "expected_answer": "No. Travellers from certain countries, including Australia, do not need a tourist visa for Fiji. If the stay is less than four months, authorities will issue a visa on arrival.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_33"],
+    "category": "entry_requirements",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q002",
+    "question": "What do I need to show to get a visa on arrival in Fiji?",
+    "expected_answer": "You must show proof of booked accommodation and a return ticket.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_33"],
+    "category": "entry_requirements",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q003",
+    "question": "When is cyclone season in Fiji?",
+    "expected_answer": "Cyclone season is from November to April, although cyclones may occur at other times.",
+    "relevant_chunk_ids": [
+      "fiji_travel_safety_chunk_1",
+      "fiji_travel_safety_chunk_16"
+    ],
+    "category": "safety",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q004",
+    "question": "Which parts of Fiji are specifically mentioned as being prone to flooding?",
+    "expected_answer": "Flooding is common especially in downtown Nadi and on the Coral Coast.",
+    "relevant_chunk_ids": [
+      "fiji_travel_safety_chunk_1",
+      "fiji_travel_safety_chunk_17"
+    ],
+    "category": "safety",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q005",
+    "question": "What precautions should I take when using ATMs in Fiji?",
+    "expected_answer": "Protect your PIN, stay alert when using ATMs, regularly check your credit card and bank statements for fraud, and where possible use ATMs where a security guard is present.",
+    "relevant_chunk_ids": [
+      "fiji_travel_safety_chunk_2",
+      "fiji_travel_safety_chunk_9"
+    ],
+    "category": "safety",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q006",
+    "question": "What should I do if a tsunami warning is issued in Fiji?",
+    "expected_answer": "Check with your accommodation provider about evacuation plans and move immediately to high ground if advised by local authorities. You should also move to high ground if you experience warning signs such as a strong earthquake, a long weak rolling earthquake, a sudden change in sea level, or loud and unusual noises from the sea. Once on high ground, monitor local media and follow local authorities' advice.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_18"],
+    "category": "safety",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q007",
+    "question": "Where are Fiji's hyperbaric chambers located?",
+    "expected_answer": "Fiji has two hyperbaric or decompression chambers, located in Suva and Nadi.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_3"],
+    "category": "health",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q008",
+    "question": "What mosquito-borne illnesses are mentioned as risks in Fiji?",
+    "expected_answer": "Dengue fever, Chikungunya and Zika virus are mentioned as mosquito-borne illness risks.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_23"],
+    "category": "health",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q009",
+    "question": "What should I bring if I need to take prescription medication to Fiji?",
+    "expected_answer": "Take enough medication for your whole trip, accounting for possible delays or changes of plans. Carry a copy of your prescription and a letter from your doctor stating the medication names, required dosage and that the medications are for your personal use. You should also ensure the medication is legal overseas.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_22"],
+    "category": "health",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q010",
+    "question": "What should travel insurance for Fiji cover?",
+    "expected_answer": "It should cover all overseas medical costs including evacuation and cover the whole trip including stopovers. Travellers should also check which activities and medical care are covered and understand exclusions, as some activities such as motorcycling, scuba diving or bungee jumping may require extra coverage.",
+    "relevant_chunk_ids": [
+      "fiji_travel_safety_chunk_19",
+      "fiji_travel_safety_chunk_20"
+    ],
+    "category": "safety",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q011",
+    "question": "What safety checks should I make before booking an adventure activity in Fiji?",
+    "expected_answer": "Check that your insurance covers the activity, check the operator's safety history and equipment, use well-known and registered operators, insist on minimum safety requirements and always use the safety equipment. If suitable safety gear is not provided, use another provider.",
+    "relevant_chunk_ids": [
+      "fiji_travel_safety_chunk_39",
+      "fiji_travel_safety_chunk_40"
+    ],
+    "category": "safety",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q012",
+    "question": "How can I identify a licensed taxi in Fiji?",
+    "expected_answer": "Licensed taxis have yellow registration plates. LT registrations are metered taxis, while LH taxis have fixed distance rates.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_41"],
+    "category": "transport",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q013",
+    "question": "Why is driving at night in Fiji considered more risky?",
+    "expected_answer": "Driving at night is more risky because of poor street lighting, stray animals and poor road quality.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_41"],
+    "category": "transport",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q014",
+    "question": "Can I drive in Fiji using an Australian driver's licence?",
+    "expected_answer": "Yes. You can hire vehicles and drive using an Australian driver's licence for the first six months after arrival. After that, you need to apply for a Fijian driver's licence at a local Land Transport Authority office. You should carry your Australian driver's licence, as digital licences may not be accepted.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_40"],
+    "category": "transport",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q015",
+    "question": "What should I check before travelling by boat in Fiji?",
+    "expected_answer": "Check the operator's credentials and that safety equipment is in place, make sure your insurance covers sea travel, avoid vessels that are over capacity, check the weather forecast, depart early and avoid travelling by sea after dark.",
+    "relevant_chunk_ids": ["fiji_travel_safety_chunk_43"],
+    "category": "transport",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q016",
+
+    "question": "What should I know about meal plans before staying in the Yasawa Islands?",
+
+    "expected_answer": "Most resorts in the Yasawa Islands require guests to buy a meal plan covering daily breakfast, lunch and dinner in addition to accommodation costs.",
+
+    "relevant_chunk_ids": ["yasawa_guide_chunk_1"],
+
+    "category": "yasawa",
+
+    "difficulty": "easy"
+  },
+
+  {
+    "id": "q017",
+
+    "question": "Where can I find an independent supermarket, restaurant and ATM in the Yasawa Islands?",
+
+    "expected_answer": "The only independent supermarket, restaurant and ATM in the region is at Nanuya Island Resort in the northern part of the island chain. It can be easily accessed from resorts near the Blue Lagoon area. Travellers staying further away are advised to visit these services at Port Denarau before travelling to the islands.",
+
+    "relevant_chunk_ids": ["yasawa_guide_chunk_1"],
+
+    "category": "yasawa",
+
+    "difficulty": "medium"
+  },
+
+  {
+    "id": "q018",
+
+    "question": "When is manta ray season in the Yasawa Islands and which resorts are closest to the manta channel?",
+
+    "expected_answer": "Manta season runs from May to October. The closest resorts to the manta channel are Barefoot Manta Resort, Manta Ray Island Resort and Paradise Cove Resort.",
+
+    "relevant_chunk_ids": ["yasawa_guide_chunk_2", "yasawa_guide_chunk_3"],
+
+    "category": "yasawa",
+
+    "difficulty": "medium"
+  },
+
+  {
+    "id": "q019",
+
+    "question": "What are some of the unique activities spread across the Yasawa Islands?",
+
+    "expected_answer": "Standout activities include shark snorkelling and diving, snorkelling with manta rays, the Sawa-i-Lau caves, sunset tubing and sea-kayaking itineraries. These are generally centred around particular locations or sections of the island chain.",
+
+    "relevant_chunk_ids": ["yasawa_guide_chunk_6", "yasawa_guide_chunk_7"],
+
+    "category": "yasawa",
+
+    "difficulty": "easy"
+  },
+
+  {
+    "id": "q020",
+
+    "question": "What is the most convenient way to travel to and island-hop around the Yasawa Islands?",
+
+    "expected_answer": "The Yasawa Flyer ferry, operated by South Sea Cruises, is described as the most convenient way to travel to and island-hop between the Yasawa Islands. It operates from Port Denarau in Nadi and drops guests at various resorts along the island chain.",
+
+    "relevant_chunk_ids": ["yasawa_guide_chunk_3", "yasawa_guide_chunk_4"],
+
+    "category": "yasawa",
+
+    "difficulty": "easy"
+  },
+
+  {
+    "id": "q021",
+
+    "question": "How long does the Yasawa Flyer take from Port Denarau to the top of the Yasawa island chain?",
+
+    "expected_answer": "The daily ferry transfer takes approximately two to five hours, depending on where along the island chain passengers are travelling.",
+
+    "relevant_chunk_ids": ["yasawa_guide_chunk_3", "yasawa_guide_chunk_4"],
+
+    "category": "yasawa",
+
+    "difficulty": "easy"
+  },
+  {
+    "id": "q022",
+    "question": "What can I do at Cloud 9 in the Mamanuca Islands?",
+    "expected_answer": "Cloud 9 is a floating two-tier bar near Malolo Island where visitors can relax on loungers, jump from the top deck, eat wood-fired pizza, have cocktails, listen to music, snorkel the surrounding reef and pre-arrange other watersports.",
+    "relevant_chunk_ids": ["mamanuca_things_to_do_chunk_1"],
+    "category": "mamanuca",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q023",
+    "question": "What activities are available at Malamala Beach Club besides relaxing by the pool?",
+    "expected_answer": "Visitors can use complimentary snorkels, kayaks and paddleboards to explore the shallows around the island.",
+    "relevant_chunk_ids": ["mamanuca_things_to_do_chunk_3"],
+    "category": "mamanuca",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q024",
+    "question": "Are the Mamanuca Islands suitable for beginner divers?",
+    "expected_answer": "Yes. The Mamanuca Islands are described as an ideal place for novice divers because of the calm, clear lagoon protected by an extensive barrier reef. The area also offers soft corals, rich fish life and dives including walls, caves, drifts and wrecks.",
+    "relevant_chunk_ids": ["mamanuca_things_to_do_chunk_5"],
+    "category": "mamanuca",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q025",
+    "question": "Should I visit a Fijian village on a Sunday?",
+    "expected_answer": "Generally no. Sundays are considered sacred and most village tours do not run. If staying in a village homestay, visitors are advised to reserve their best attire for Sunday church service.",
+    "relevant_chunk_ids": ["village_etiquette_chunk_5"],
+    "category": "culture",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q026",
+    "question": "What are the best months for shark diving in Fiji?",
+    "expected_answer": "June to September is considered the best period for shark diving because cooler nutrient-rich currents bring in more baitfish and larger predators, and visibility is usually clearer. Sharks can still be found year-round.",
+    "relevant_chunk_ids": [
+      "marine_life_encounters_chunk_5",
+      "marine_life_encounters_chunk_6"
+    ],
+    "category": "marine_life",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q027",
+    "question": "Where in Fiji can I have reliable shark diving encounters?",
+    "expected_answer": "Beqa Lagoon is highlighted for reliable encounters with bull sharks, grey reef sharks, nurse sharks and occasional tiger sharks. The Yasawa Islands also have the Awakening shark dive, while the Dreamhouse dive site near Savusavu offers a chance to see schooling scalloped hammerheads.",
+    "relevant_chunk_ids": [
+      "marine_life_encounters_chunk_6",
+      "marine_life_encounters_chunk_7"
+    ],
+    "category": "marine_life",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q028",
+    "question": "Can I book an organised swim-with-whales tour in Fiji?",
+    "expected_answer": "No. Fiji is a protected whale sanctuary and there are no organised swim-with-whale tours, so encounters are completely wild and opportunistic.",
+    "relevant_chunk_ids": [
+      "marine_life_encounters_chunk_4",
+      "marine_life_encounters_chunk_5"
+    ],
+    "category": "marine_life",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q029",
+    "question": "When might I see humpback whales while diving in Fiji?",
+    "expected_answer": "Humpback whales pass through Fiji's waters between July and October. Encounters are opportunistic, and visitors might hear their songs underwater or spot them from boats between dives, especially around Viti Levu and nearby channels.",
+    "relevant_chunk_ids": [
+      "marine_life_encounters_chunk_4",
+      "marine_life_encounters_chunk_5"
+    ],
+    "category": "marine_life",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q030",
+    "question": "When is a good time for macro diving in Fiji and what marine life might I see?",
+    "expected_answer": "November to April is highlighted as a good time for macro diving. Increased plankton supports smaller reef life including nudibranchs, shrimps and juvenile fish, although visibility can be slightly lower.",
+    "relevant_chunk_ids": [
+      "marine_life_encounters_chunk_8",
+      "marine_life_encounters_chunk_9"
+    ],
+    "category": "marine_life",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q031",
+    "question": "Can I swim with dolphins as part of an organised experience in Fiji?",
+    "expected_answer": "No. Fiji does not have swim-with-dolphin experiences, so encounters are wild and natural. Boat trips to spot resident dolphins are sometimes organised in areas including Moon Reef, the Suncoast, Nadi Bay and the Mamanuca Islands, but sightings are not guaranteed.",
+    "relevant_chunk_ids": [
+      "marine_life_encounters_chunk_9",
+      "marine_life_encounters_chunk_10"
+    ],
+    "category": "marine_life",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q032",
+    "question": "Where are some of the best places in Fiji to see manta rays?",
+    "expected_answer": "The source highlights Manta Reef in Kadavu, Drawaqa Island in the Yasawa Islands, Namena Marine Reserve off Savusavu and the Somosomo Strait in Taveuni as some of the best places to see manta rays. They are also regularly seen in the Lomaiviti waters off Wakaya Island and Gau.",
+    "relevant_chunk_ids": ["underwater_fiji_chunk_1"],
+    "category": "marine_life",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q033",
+    "question": "When is a good time to see Fiji's soft corals at their best?",
+    "expected_answer": "April to July is highlighted for soft coral diving, although soft corals are present year-round and conditions also depend on the current and tide. Hotspots mentioned include Rainbow Reef, Bligh Waters, Namena Marine Reserve and Beqa Lagoon.",
+    "relevant_chunk_ids": [
+      "marine_life_encounters_chunk_1",
+      "marine_life_encounters_chunk_2"
+    ],
+    "category": "marine_life",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q034",
+    "question": "What can I do at Wailoaloa Beach in Nadi?",
+    "expected_answer": "Wailoaloa Beach is a good spot for a beach stroll. It also has laid-back affordable bars and eateries where locals, expats and travellers gather to enjoy sunsets and local live music.",
+    "relevant_chunk_ids": ["nadi_guide_chunk_1", "nadi_guide_chunk_2"],
+    "category": "nadi",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q035",
+    "question": "Why might I visit the Garden of the Sleeping Giant near Nadi?",
+    "expected_answer": "The Garden of the Sleeping Giant is located beneath the Sleeping Giant mountain in the Nausori Highlands and is an attraction for visitors interested in flora and fauna.",
+    "relevant_chunk_ids": ["nadi_guide_chunk_2"],
+    "category": "nadi",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q036",
+    "question": "What do you do during the Vavavi Cooking and Cultural Experience in Nadi?",
+    "expected_answer": "The half-day experience teaches visitors about lovo, a traditional feast slow-cooked underground. Visitors learn to prepare the lovo pit, scrape coconuts, wrap food in palm leaves, take a guided tour of the local market while the food cooks, and then eat the meal.",
+    "relevant_chunk_ids": ["nadi_things_to_do_chunk_1"],
+    "category": "nadi",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q037",
+    "question": "What can I experience on the Bulaccino Organic Farm Tour?",
+    "expected_answer": "Visitors can explore the Organic Path independently or with a guide and see traditional crops, medicinal plants, fruit trees, a fishpond and an aviary. They may also get to harvest seasonal produce or feed sheep and ducks.",
+    "relevant_chunk_ids": ["nadi_things_to_do_chunk_2"],
+    "category": "nadi",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q038",
+    "question": "What can I do on the Colours of Fiji tour at Sigavou Studios?",
+    "expected_answer": "Visitors can explore the art gallery, purchase Fiji-made art, learn about traditional Fijian masi craft and create their own art project to take home.",
+    "relevant_chunk_ids": ["nadi_things_to_do_chunk_3"],
+    "category": "nadi",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q039",
+    "question": "Can I take an island day trip from Nadi and what kinds of activities are available?",
+    "expected_answer": "Yes. Half-day and full-day trips to the Mamanuca and Yasawa Islands regularly leave from Port Denarau, Nasoso and Vuda marinas. Activities mentioned include picnicking on a deserted island, visiting a beach club, jumping from a floating bar and snorkelling over sand cays.",
+    "relevant_chunk_ids": ["nadi_things_to_do_chunk_15"],
+    "category": "nadi",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q040",
+
+    "question": "What areas can I explore using Nadi as a base?",
+
+    "expected_answer": "From Nadi, visitors can access the rural interior of Viti Levu, the Nausori Highlands, Denarau Island and the Mamanuca Islands. Heading north provides access to the Sabeto River Valley, Vuda Point and Lautoka, while heading south leads toward the Coral Coast.",
+
+    "relevant_chunk_ids": ["nadi_guide_chunk_1"],
+
+    "category": "nadi",
+
+    "difficulty": "medium"
+  },
+  {
+    "id": "q041",
+    "question": "Which hotel in Nadi has the cheapest room available tonight?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q042",
+    "question": "What will the temperature in Nadi be at 2 PM tomorrow?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q043",
+    "question": "How many manta rays are currently at the channel near Drawaqa Island?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q044",
+    "question": "Which restaurant in Nadi currently has the highest Google rating?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q045",
+    "question": "Are there any seats still available on tomorrow's Yasawa Flyer?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q046",
+    "question": "What is the current wait time at immigration when arriving at Nadi International Airport?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q047",
+    "question": "Which resort in the Yasawa Islands has the best guest reviews this month?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q048",
+    "question": "Is the 8:45 AM ferry from Port Denarau running on time today?",
+    "expected_answer": null,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "hard"
+  }
+]
