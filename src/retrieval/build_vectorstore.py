@@ -9,8 +9,35 @@ from sentence_transformers import SentenceTransformer
 CHUNKS_FILE = Path("data/processed/chunks.json")
 CHROMA_DIR = Path("data/chroma")
 
-COLLECTION_NAME = "fiji_travel"
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+MODEL_KEY = "minilm"
+
+MODELS = {
+    "minilm": {
+        "model_name": "all-MiniLM-L6-v2",
+        "collection_name": "fiji_travel_minilm",
+        "document_prefix": "",
+        "query_prefix": ""
+    },
+    "bge": {
+        "model_name": "BAAI/bge-small-en-v1.5",
+        "collection_name": "fiji_travel_bge",
+        "document_prefix": "",
+        "query_prefix": (
+            "Represent this sentence for searching relevant passages: "
+        )
+    },
+    "e5": {
+        "model_name": "intfloat/e5-small-v2",
+        "collection_name": "fiji_travel_e5",
+        "document_prefix": "passage: ",
+        "query_prefix": "query: "
+    }
+}
+
+EMBEDDING_MODEL = MODELS[MODEL_KEY]["model_name"]
+COLLECTION_NAME = MODELS[MODEL_KEY]["collection_name"]
+DOCUMENT_PREFIX = MODELS[MODEL_KEY]["document_prefix"]
+QUERY_PREFIX = MODELS[MODEL_KEY]["query_prefix"]
 
 
 def load_chunks():
@@ -30,7 +57,10 @@ def main():
     model = SentenceTransformer(EMBEDDING_MODEL)
 
     # Extract the text from each chunk
-    texts = [chunk["text"] for chunk in chunks]
+    texts = [
+    DOCUMENT_PREFIX + chunk["text"]
+    for chunk in chunks
+]
 
     print("Creating embeddings...")
 

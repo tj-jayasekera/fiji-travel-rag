@@ -6,8 +6,31 @@ from sentence_transformers import SentenceTransformer
 
 CHROMA_DIR = Path("data/chroma")
 
-COLLECTION_NAME = "fiji_travel"
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+MODEL_KEY = "minilm"
+
+MODELS = {
+    "minilm": {
+        "model_name": "all-MiniLM-L6-v2",
+        "collection_name": "fiji_travel_minilm",
+        "query_prefix": ""
+    },
+    "bge": {
+        "model_name": "BAAI/bge-small-en-v1.5",
+        "collection_name": "fiji_travel_bge",
+        "query_prefix": (
+            "Represent this sentence for searching relevant passages: "
+        )
+    },
+    "e5": {
+        "model_name": "intfloat/e5-small-v2",
+        "collection_name": "fiji_travel_e5",
+        "query_prefix": "query: "
+    }
+}
+
+EMBEDDING_MODEL = MODELS[MODEL_KEY]["model_name"]
+COLLECTION_NAME = MODELS[MODEL_KEY]["collection_name"]
+QUERY_PREFIX = MODELS[MODEL_KEY]["query_prefix"]
 
 
 def load_collection():
@@ -25,8 +48,10 @@ def search(query: str, n_results: int = 5):
     model = SentenceTransformer(EMBEDDING_MODEL)
 
     # Convert the user's question into an embedding
+    query_text = QUERY_PREFIX + query
+
     query_embedding = model.encode(
-        query,
+        query_text,
         normalize_embeddings=True
     )
 

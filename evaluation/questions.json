@@ -39,7 +39,7 @@
   },
   {
     "id": "q005",
-    "question": "What precautions should I take when using ATMs in Fiji?",
+    "question": "What should I know about using ATMs in Fiji?",
     "expected_answer": "Protect your PIN, stay alert when using ATMs, regularly check your credit card and bank statements for fraud, and where possible use ATMs where a security guard is present.",
     "relevant_chunk_ids": [
       "fiji_travel_safety_chunk_2",
