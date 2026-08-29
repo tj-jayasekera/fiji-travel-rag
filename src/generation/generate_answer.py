@@ -97,14 +97,16 @@ def generate_answer(question):
     text_parts = []
 
     for candidate in response.candidates:
-
         for part in candidate.content.parts:
-
             if part.text:
-
                 text_parts.append(part.text)
 
-    return "\n".join(text_parts)
+    answer = "\n".join(text_parts)
+
+    return {
+        "answer": answer,
+        "retrieval_results": results
+    }
 
 
 def main():
@@ -116,9 +118,9 @@ def main():
     print("\nSearching Fiji knowledge base...")
     print("Generating answer...\n")
 
-    answer = generate_answer(question)
+    result = generate_answer(question)
 
-    print(answer)
+    print(result["answer"])
 
 
 if __name__ == "__main__":
