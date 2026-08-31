@@ -42,8 +42,30 @@ if user_question:
             result = generate_answer(user_question)
 
         answer = result["answer"]
+        retrieval_results = result["retrieval_results"]
 
         st.markdown(answer)
+
+        with st.expander("View retrieved sources"):
+            documents = retrieval_results["documents"][0]
+            metadatas = retrieval_results["metadatas"][0]
+
+            for index, (document, metadata) in enumerate(
+                zip(documents, metadatas),
+                start=1
+            ):
+                st.markdown(
+                    f"**{index}. {metadata['title']}**"
+                )
+
+                st.caption(
+                    f"{metadata['source']} · {metadata['category']}"
+                )
+
+                st.write(document)
+
+                if index < len(documents):
+                    st.divider()
 
     st.session_state.messages.append(
         {
