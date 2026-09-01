@@ -55,7 +55,7 @@ Rather than focusing only on building a working chatbot, the project also evalua
 
 - **Python** – Core development language for document processing, retrieval, generation and evaluation
 - **Sentence Transformers** – Creation of dense vector embeddings for semantic search
-- **all-MiniLM-L6-v2** – Final embedding model selected for the V1 retrieval pipeline
+- **all-MiniLM-L6-v2** – Final embedding model selected for the retrieval pipeline
 - **ChromaDB** – Persistent vector database for storing and retrieving document chunks using cosine similarity
 - **Google Gemini** – LLM used to generate answers from retrieved context
 - **Streamlit** – Interactive chat interface for the final application
@@ -183,12 +183,30 @@ Four information retrieval metrics were used:
 - **Recall@K** — the proportion of known relevant chunks successfully retrieved
 - **Mean Reciprocal Rank (MRR)** — measures how highly the first relevant result appeared in the ranking
 
+### Embedding Model Comparison
+
+Before tuning retrieval depth, two lightweight sentence embedding models were evaluated under the same `k = 5` retrieval configuration: **MiniLM (`all-MiniLM-L6-v2`)** and **BGE-small**.
+
+For each embedding model, the experiment measured **Hit Rate, Precision, Recall, and MRR** across the 40 answerable questions. In addition to these aggregate metrics, the evaluation also tracked **failed questions at each K** — defined as questions where **none of the manually identified relevant chunks appeared within the Top-K retrieved results**.
+
+<img width="452" height="183" alt="image" src="https://github.com/user-attachments/assets/26300e51-6338-4b97-958f-ae8f1072ae84" />
+
+MiniLM outperformed BGE-small across every measured retrieval metric:
+
+- **Hit Rate:** 0.900 vs 0.800
+- **Precision:** 0.215 vs 0.185
+- **Recall:** 0.800 vs 0.738
+- **MRR:** 0.645 vs 0.606
+
+The failed-question analysis supported the same result. MiniLM failed to retrieve a relevant chunk for **4 of the 40 answerable questions**, compared with **8 failures using BGE-small**.
+
+Based on its stronger overall retrieval performance and lower number of complete retrieval failures, **MiniLM was retained as the embedding model for V1**.
 
 ### Top-K Experiment
 
 Retrieval was evaluated at `k = 3`, `5`, `8`, and `10` to determine how many chunks should be retrieved for each user query.
 
-For each configuration, the experiment measured **Hit Rate, Precision, Recall, and MRR** across the 40 answerable questions. In addition to these aggregate metrics, the evaluation also tracked **failed questions at each K** — defined as questions where **none of the manually identified relevant chunks appeared within the Top-K retrieved results**.
+The same evaluation framework as before was applied across each Top-K configuration to ensure a consistent comparison of retrieval performance.
 
 <img width="452" height="185" alt="image" src="https://github.com/user-attachments/assets/fa8c781a-b2f0-400a-8e9d-5da9b8b71778" />
 
@@ -204,24 +222,12 @@ Increasing retrieval depth further produced diminishing returns. At `k = 8` and 
 
 Recall improved slightly from **0.800 at `k = 5` to 0.838 at `k = 10`**, but this came at the cost of substantially lower precision, which fell from **0.215 to 0.115** as more irrelevant chunks were retrieved.
 
-Based on these results, **`k = 5` was selected for the final V1 retrieval pipeline**. It resolved all of the retrieval failures that could be recovered simply by increasing K, while retrieving fewer irrelevant chunks than the larger configurations.
+Based on these results, **`k = 5` was selected for the final retrieval pipeline**. It resolved all of the retrieval failures that could be recovered simply by increasing K, while retrieving fewer irrelevant chunks than the larger configurations.
 
-The experiment showed a clear improvement when increasing retrieval depth from `k = 3` to `k = 5`:
-
-- **Hit Rate increased from 0.675 to 0.900**
-- **Recall increased from 0.625 to 0.800**
-- **MRR increased from 0.592 to 0.645**
-- Failed questions decreased from **13 at `k = 3` to 4 at `k = 5`**
-
-Increasing retrieval depth further produced diminishing returns. At `k = 8` and `k = 10`, the same four questions continued to fail, while Hit Rate and MRR remained unchanged at **0.900** and **0.645** respectively.
-
-Recall improved slightly from **0.800 at `k = 5` to 0.838 at `k = 10`**, but this came at the cost of substantially lower precision, which fell from **0.215 to 0.115** as more irrelevant chunks were retrieved.
-
-Based on these results, **`k = 5` was selected for the final V1 retrieval pipeline**. It resolved all of the retrieval failures that could be recovered simply by increasing K, while retrieving fewer irrelevant chunks than the larger configurations.
 
 ### Failure Analysis
 
-The final Top-5 configuration successfully retrieved at least one relevant chunk for **36 of the 40 answerable evaluation questions**.
+The final Top-5 configuration using `all-MiniLM-L6-v2` successfully retrieved at least one relevant chunk for **36 of the 40 answerable evaluation questions**.
 
 The remaining failures were manually reviewed rather than relying on aggregate metrics alone. Missed questions included topics such as:
 
@@ -232,4 +238,4 @@ The remaining failures were manually reviewed rather than relying on aggregate m
 
 These cases highlighted limitations in semantic retrieval where the wording of a question did not align strongly enough with the representation of the relevant source passage.
 
-The results established a measurable V1 retrieval baseline while also identifying specific queries that could benefit from future improvements such as query rewriting, hybrid keyword-semantic retrieval, reranking, or expanded source coverage.
+The results established a measurable  retrieval baseline while also identifying specific queries that could benefit from future improvements such as query rewriting, hybrid keyword-semantic retrieval, reranking, or expanded source coverage.
