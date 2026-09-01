@@ -172,6 +172,9 @@ A custom evaluation set of **48 Fiji travel questions** was created to test the 
 - **40 answerable questions** with relevant information present in the knowledge base
 - **8 unanswerable questions** where the required information was not available in the corpus
 
+For example:
+<img width="846" height="191" alt="image" src="https://github.com/user-attachments/assets/87b46b70-1f5c-4386-889b-77a5ddc53a5f" />
+
 For each answerable question, the relevant chunk IDs were manually identified and cross-checked against the source documents. These chunk-level relevance labels were then used as ground truth for evaluating retrieval performance.
 
 ### Evaluation Metrics
@@ -239,3 +242,201 @@ The remaining failures were manually reviewed rather than relying on aggregate m
 These cases highlighted limitations in semantic retrieval where the wording of a question did not align strongly enough with the representation of the relevant source passage.
 
 The results established a measurable  retrieval baseline while also identifying specific queries that could benefit from future improvements such as query rewriting, hybrid keyword-semantic retrieval, reranking, or expanded source coverage.
+
+
+## 🤖 Answer Generation
+
+Once the Top-5 relevant chunks have been retrieved, they are passed to the generation pipeline as supporting context for the user's question.
+
+Rather than allowing the language model to answer freely from its own knowledge, the generation prompt explicitly constrains the model to use the **retrieved Fiji travel sources as its evidence**.
+
+### Context-Augmented Prompt
+
+For each query, the generation pipeline constructs a prompt containing:
+
+1. **The user's question**
+2. **The Top-5 retrieved text chunks**
+3. **Source metadata associated with each retrieved chunk**
+4. **Instructions defining how the model should use the supplied context**
+
+The completed prompt is then sent to **Gemini**, which generates the final response.
+
+```text
+User Question
+      +
+Top-5 Retrieved Chunks
+      +
+Source Metadata
+      +
+Grounding Instructions
+      ↓
+    Gemini
+      ↓
+Grounded Travel Response
+```
+
+### Grounding & Guardrails
+
+The generation prompt was designed to reduce unsupported answers and keep responses grounded in the curated knowledge base.
+
+Gemini is instructed to:
+
+- Answer using **only the information contained in the retrieved sources**
+- Avoid introducing unsupported information from its general knowledge
+- Clearly indicate when the retrieved context is insufficient to answer the question
+- Reference the relevant **source titles and publishers** when supporting an answer
+
+If sufficient evidence is not available, the model is instructed to respond that it **does not have enough information in the provided sources**, rather than attempting to fill the gap with an ungrounded answer.
+
+### Source-Aware Responses
+
+Because source metadata is preserved throughout the ingestion and retrieval pipelines, the generation model receives both the retrieved content and information about where that content originated.
+
+This allows the final response to remain connected to the curated travel documents used as evidence, making answers more **traceable and transparent** than responses generated solely from the language model's internal knowledge.
+
+The result is a generation pipeline designed around a core RAG principle: **retrieve evidence first, then generate an answer from that evidence.**
+
+
+## 📊 Generation Evaluation
+
+After establishing the final retrieval configuration, the complete RAG pipeline was evaluated to determine whether the retrieved evidence was being converted into **accurate, grounded, and useful travel responses**.
+
+While retrieval evaluation measures whether the correct information can be found, generation evaluation focuses on the quality of the **final answer produced from that information**.
+
+### Evaluation Dataset
+
+The same **48-question evaluation set** was used to test the end-to-end RAG pipeline:
+
+- **40 answerable questions** — the knowledge base contains sufficient information to produce an answer
+- **8 unanswerable questions** — the knowledge base intentionally does not contain sufficient information
+
+Including unanswerable questions was important for testing whether the assistant could recognise the limits of its knowledge base rather than generating unsupported information.
+
+### Evaluation Approach
+
+Each question was passed through the complete pipeline using the final V1 retrieval configuration:
+
+```text
+Evaluation Question
+        ↓
+MiniLM Query Embedding
+        ↓
+Top-5 Retrieval
+        ↓
+Retrieved Context + Metadata
+        ↓
+Gemini
+        ↓
+Generated Answer
+        ↓
+Generation Evaluation
+```
+
+The generated responses were then evaluated separately from retrieval performance. This made it possible to assess not only whether the system found relevant evidence, but whether the generation model **used that evidence correctly and remained grounded in the supplied context**.
+
+For answerable questions, the evaluation focused on whether the generated response correctly addressed the question using the retrieved evidence.
+
+For unanswerable questions, the expected behaviour was different: the assistant should recognise that the supplied sources were insufficient and **decline to provide an unsupported answer**.
+
+This provides an end-to-end evaluation of the two behaviours required from the assistant: **answer when supported by the knowledge base, and abstain when it is not.**
+
+## 📊 Generation Evaluation
+
+After selecting the final retrieval configuration, the complete RAG pipeline was evaluated using the same **48-question evaluation set**.
+
+The goal was to test two behaviours:
+
+- Whether the assistant could generate a useful, source-grounded answer when the required information was available
+- Whether it could correctly **abstain** when the knowledge base did not contain enough information
+
+### Evaluation Setup
+
+The final V1 pipeline used:
+
+- `all-MiniLM-L6-v2` embeddings
+- ChromaDB semantic retrieval
+- `k = 5` retrieved chunks
+- Gemini for grounded answer generation
+
+Each evaluation question was passed through the complete pipeline:
+
+```text
+Evaluation Question
+        ↓
+MiniLM Query Embedding
+        ↓
+Top-5 Retrieval
+        ↓
+Retrieved Context + Source Metadata
+        ↓
+Gemini
+        ↓
+Generated Answer
+```
+
+Generated responses were compared against manually prepared expected answers and reviewed alongside the retrieved chunks to distinguish **retrieval failures from generation failures**.
+
+### Unanswerable Question Handling
+
+Eight questions were intentionally designed to require information unavailable in the static knowledge base, including:
+
+- Live hotel prices
+- Tomorrow's weather
+- Current ferry availability and delays
+- Live immigration wait times
+- Current Google ratings and guest reviews
+
+The assistant correctly recognised insufficient evidence for **all 8 unanswerable questions**, producing an abstention rather than attempting to invent an answer.
+
+**Unanswerable-question abstention: 8 / 8 (100%)**
+
+For example:
+
+> **Question:** Which hotel in Nadi has the cheapest room available tonight?  
+> **Response:** *"I don't have enough information in my current Fiji travel sources to answer that."*
+
+The hardest unanswerable example asked whether the **8:45 AM ferry from Port Denarau was running on time today**. Although the retrieved documents contained the scheduled departure time, the model correctly distinguished between a published schedule and **real-time operational status**, explaining that the available sources could not confirm whether the ferry was currently running on time.
+
+### Answerable Question Behaviour
+
+For most answerable questions, the assistant successfully transformed retrieved evidence into concise travel responses while retaining source attribution.
+
+Strong examples included questions covering:
+
+- Visa and entry requirements
+- Cyclone and tsunami safety
+- Health and medication guidance
+- Driving and taxi information
+- Yasawa and Mamanuca travel
+- Diving and marine life
+- Fijian cultural etiquette
+- Nadi activities and day trips
+
+The evaluation also showed that generation quality was strongly dependent on retrieval quality. When the relevant source chunk was present in the Top-5 results, Gemini generally produced an answer closely aligned with the expected response.
+
+### Error Analysis
+
+Several weaker generated answers corresponded directly with the four retrieval failures identified earlier:
+
+- `q005` — ATM safety precautions
+- `q015` — boat travel safety
+- `q020` — Yasawa Flyer / island hopping
+- `q040` — areas accessible from Nadi
+
+Because the expected evidence was not retrieved for these questions, Gemini received incomplete context and consequently produced answers that were either incomplete or focused on related information instead.
+
+For example, `q020` asked for the **most convenient way to island-hop through the Yasawa Islands**. The expected answer identified the **Yasawa Flyer**, but the relevant chunks were not retrieved. The generated response instead discussed cruises, charters and general ferry travel — reasonable information from the supplied context, but not the specific answer required.
+
+One important failure occurred even though retrieval was successful. For `q034`, asking what visitors can do at **Wailoaloa Beach**, a relevant chunk was retrieved as the top result, yet the generation model still responded that it did not have enough information.
+
+This demonstrates that retrieval success does not automatically guarantee generation success and highlights the value of evaluating both stages independently.
+
+### Evaluation Takeaways
+
+The end-to-end evaluation showed three important behaviours:
+
+1. **Strong retrieval generally produced strong generation** — when the required evidence was present, responses closely followed the source material.
+2. **Retrieval errors propagated downstream** — missing evidence led to incomplete or less specific answers even when Gemini followed its grounding instructions correctly.
+3. **Abstention guardrails were effective** — all eight deliberately unanswerable questions were rejected rather than answered using unsupported information.
+
+Together, these results provide a measurable baseline for V1 and identify clear areas for future improvement across both retrieval and generation.
