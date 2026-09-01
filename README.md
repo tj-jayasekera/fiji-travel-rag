@@ -67,7 +67,7 @@ Rather than focusing only on building a working chatbot, the project also evalua
 
 The application separates retrieval from generation so that responses are grounded in the curated Fiji travel knowledge base.
 
-The V1 pipeline follows this architecture:
+The pipeline follows this architecture:
 
         23 Curated Fiji Travel Documents
                        │
@@ -125,7 +125,7 @@ Before being added to the retrieval system, the source documents were cleaned to
 
 ### Knowledge Base Summary
 
-| Component | V1 |
+
 |---|---:|
 | **Curated source documents** | 23 |
 | **Processed text chunks** | 260 |
