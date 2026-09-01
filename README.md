@@ -72,7 +72,6 @@ The V1 pipeline follows this architecture:
 KNOWLEDGE BASE PREPARATION
 
 23 Curated Documents
-
         ↓
 
 Text Cleaning
