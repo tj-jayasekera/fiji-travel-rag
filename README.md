@@ -69,49 +69,6 @@ The application separates retrieval from generation so that responses are ground
 
 The V1 pipeline follows this architecture:
 
-KNOWLEDGE BASE PREPARATION
-
-23 Curated Documents
-        ↓
-
-Text Cleaning
-
-        ↓
-
-Chunking
-
-        ↓
-
-MiniLM Embeddings
-
-        ↓
-
-ChromaDB Vector Store
-
-QUERY + GENERATION PIPELINE
-
-User Question
-
-        ↓
-
-Query Embedding
-
-        ↓
-
-Top-5 Semantic Retrieval
-
-        ↓
-
-Retrieved Context
-
-        ↓
-
-Gemini Generation
-
-        ↓
-
-Grounded Answer
-
-        ↓
-
-Streamlit Interface
+23 Curated Documents → Text Cleaning → Chunking → MiniLM Embeddings → ChromaDB Vector Store
+                                                                         ↓
+User Question → MiniLM Query Embedding → Top-5 Semantic Retrieval → Retrieved Context → Gemini → Grounded Response → Streamlit
