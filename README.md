@@ -185,15 +185,43 @@ Four information retrieval metrics were used:
 
 ### Top-K Experiment
 
-Different retrieval depths were evaluated to determine how much context should be passed to the generation model.
+Retrieval was evaluated at `k = 3`, `5`, `8`, and `10` to determine how many chunks should be retrieved for each user query.
 
-<img width="452" height="185" alt="image" src="https://github.com/user-attachments/assets/bc622b4c-80aa-4e2d-b22a-c1000f2615f3" />
+For each configuration, the experiment measured **Hit Rate, Precision, Recall, and MRR** across the 40 answerable questions. In addition to these aggregate metrics, the evaluation also tracked **failed questions at each K** — defined as questions where **none of the manually identified relevant chunks appeared within the Top-K retrieved results**.
 
-Increasing retrieval depth from `k = 3` to `k = 5` produced a substantial improvement in coverage, increasing **Hit Rate from 67.5% to 90.0%** and **Recall from 62.5% to 80.0%**.
+### Top-K Experiment
 
-Increasing K beyond 5 provided only small recall improvements while introducing considerably more irrelevant context. Precision fell from **21.5% at k = 5** to **11.5% at k = 10**, with no improvement in Hit Rate or MRR.
+Retrieval was evaluated at `k = 3`, `5`, `8`, and `10` to determine how many chunks should be retrieved for each user query.
 
-For this reason, **Top-5 retrieval was selected for V1** as the best trade-off between retrieving sufficient evidence and limiting unnecessary context passed to the generation model.
+For each configuration, the experiment measured **Hit Rate, Precision, Recall, and MRR** across the 40 answerable questions. In addition to these aggregate metrics, the evaluation also tracked **failed questions at each K** — defined as questions where **none of the manually identified relevant chunks appeared within the Top-K retrieved results**.
+
+<img width="452" height="185" alt="image" src="https://github.com/user-attachments/assets/fa8c781a-b2f0-400a-8e9d-5da9b8b71778" />
+
+The experiment showed a clear improvement when increasing retrieval depth from `k = 3` to `k = 5`:
+
+- **Hit Rate increased from 0.675 to 0.900**
+- **Recall increased from 0.625 to 0.800**
+- **MRR increased from 0.592 to 0.645**
+- Failed questions decreased from **13 at `k = 3` to 4 at `k = 5`**
+
+Increasing retrieval depth further produced diminishing returns. At `k = 8` and `k = 10`, the same four questions continued to fail, while Hit Rate and MRR remained unchanged at **0.900** and **0.645** respectively.
+
+Recall improved slightly from **0.800 at `k = 5` to 0.838 at `k = 10`**, but this came at the cost of substantially lower precision, which fell from **0.215 to 0.115** as more irrelevant chunks were retrieved.
+
+Based on these results, **`k = 5` was selected for the final V1 retrieval pipeline**. It resolved all of the retrieval failures that could be recovered simply by increasing K, while retrieving fewer irrelevant chunks than the larger configurations.
+
+The experiment showed a clear improvement when increasing retrieval depth from `k = 3` to `k = 5`:
+
+- **Hit Rate increased from 0.675 to 0.900**
+- **Recall increased from 0.625 to 0.800**
+- **MRR increased from 0.592 to 0.645**
+- Failed questions decreased from **13 at `k = 3` to 4 at `k = 5`**
+
+Increasing retrieval depth further produced diminishing returns. At `k = 8` and `k = 10`, the same four questions continued to fail, while Hit Rate and MRR remained unchanged at **0.900** and **0.645** respectively.
+
+Recall improved slightly from **0.800 at `k = 5` to 0.838 at `k = 10`**, but this came at the cost of substantially lower precision, which fell from **0.215 to 0.115** as more irrelevant chunks were retrieved.
+
+Based on these results, **`k = 5` was selected for the final V1 retrieval pipeline**. It resolved all of the retrieval failures that could be recovered simply by increasing K, while retrieving fewer irrelevant chunks than the larger configurations.
 
 ### Failure Analysis
 
