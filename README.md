@@ -69,9 +69,6 @@ The application separates retrieval from generation so that responses are ground
 
 The V1 pipeline follows this architecture:
 
-
-                  **KNOWLEDGE PIPELINE**
-
         23 Curated Fiji Travel Documents
                        │
                        ▼
@@ -87,7 +84,6 @@ The V1 pipeline follows this architecture:
              ChromaDB Vector Store
 
 
-                   ** QUERY PIPELINE**
 
                   User Question
                        │
