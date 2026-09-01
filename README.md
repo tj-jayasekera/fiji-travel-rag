@@ -120,19 +120,23 @@ The documents cover practical information a traveller may need when planning a t
 - 🌦️ **Weather & Travel Conditions** — climate, seasonal considerations, and travel planning
 - 🤝 **Culture & Local Guidance** — customs, etiquette, and responsible travel information
 
-Before being added to the retrieval system, the source documents were cleaned to remove unnecessary formatting and text with little retrieval value. The cleaned content was then divided into smaller passages suitable for embedding and semantic retrieval.
+### Document Processing
 
+The raw documents were processed into a retrieval-ready knowledge base through several stages:
 
-### Knowledge Base Summary
+1. **Text extraction and cleaning**  
+   Text was extracted from the collected documents and cleaned to remove formatting artefacts, repeated whitespace, and other content that added little value to semantic retrieval.
 
+2. **Chunking**  
+   The cleaned documents were split into smaller passages so that the system could retrieve specific pieces of information instead of entire documents. Across the 23 source documents, this produced **260 searchable text chunks**.
 
+3. **Metadata preservation**  
+   Each chunk retained metadata linking it back to its original source. This allows retrieved information to be traced to the document it came from and later used for source attribution during answer generation.
 
-| **Curated source documents** | 23 |
-| **Processed text chunks** | 260 |
-| **Embedding model** | `all-MiniLM-L6-v2` |
-| **Vector database** | ChromaDB |
-| **Similarity metric** | Cosine similarity |
+4. **Embedding generation**  
+   Each chunk was converted into a dense vector representation using `all-MiniLM-L6-v2`. These embeddings capture semantic meaning, allowing passages to be matched to user questions even when they do not contain the exact same wording.
 
-This produced a compact, domain-specific knowledge base designed specifically around **Fiji travel questions**, rather than a general-purpose collection of travel information.
+5. **Vector storage**  
+   The resulting embeddings, text chunks, and associated metadata were stored in a persistent **ChromaDB** collection using cosine similarity as the distance metric.
 
-Each chunk retains source metadata, allowing retrieved context to remain connected to its original document and enabling the generation pipeline to produce source-grounded answers.
+The final V1 knowledge base contains **260 embedded chunks from 23 curated documents**, providing the retrieval layer with a focused and traceable collection of Fiji travel information.
