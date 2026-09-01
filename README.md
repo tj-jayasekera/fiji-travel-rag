@@ -69,38 +69,50 @@ The application separates retrieval from generation so that responses are ground
 
 The V1 pipeline follows this architecture:
 
-           ```mermaid
+KNOWLEDGE BASE PREPARATION
 
-flowchart LR
+23 Curated Documents
 
-    subgraph KB["Knowledge Base Preparation"]
+        ↓
 
-        A["23 Curated<br/>Travel Documents"] --> B["Text Cleaning"]
+Text Cleaning
 
-        B --> C["Chunking<br/>260 Chunks"]
+        ↓
 
-        C --> D["MiniLM<br/>Embeddings"]
+Chunking
 
-        D --> E[("ChromaDB<br/>Vector Store")]
+        ↓
 
-    end
+MiniLM Embeddings
 
-    subgraph RAG["RAG Query Pipeline"]
+        ↓
 
-        F["User Question"] --> G["MiniLM<br/>Query Embedding"]
+ChromaDB Vector Store
 
-        G --> H["Semantic Search<br/>Top-K = 5"]
+QUERY + GENERATION PIPELINE
 
-        E --> H
+User Question
 
-        H --> I["Retrieved<br/>Context"]
+        ↓
 
-        I --> J["Gemini"]
+Query Embedding
 
-        F --> J
+        ↓
 
-        J --> K["Grounded<br/>Answer"]
+Top-5 Semantic Retrieval
 
-        K --> L["Streamlit<br/>Chat Interface"]
+        ↓
 
-    end
+Retrieved Context
+
+        ↓
+
+Gemini Generation
+
+        ↓
+
+Grounded Answer
+
+        ↓
+
+Streamlit Interface
