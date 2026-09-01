@@ -11,7 +11,7 @@
 - [🧪 Retrieval Evaluation](#-retrieval-evaluation)
 - [🤖 Answer Generation](#-answer-generation)
 - [📊 Generation Evaluation](#-generation-evaluation)
-- [💬 Streamlit Application](#-streamlit-application)
+- [💬 Interactive Application](#-interactive-application)
 - [⚠️ Limitations](#️-limitations)
 - [🚀 Future Improvements](#-future-improvements)
 
@@ -314,7 +314,7 @@ Including unanswerable questions was important for testing whether the assistant
 
 ### Evaluation Approach
 
-Each question was passed through the complete pipeline using the final V1 retrieval configuration:
+Each question was passed through the complete pipeline using the final retrieval configuration:
 
 ```text
 Evaluation Question
@@ -358,23 +358,23 @@ The final V1 pipeline used:
 - `k = 5` retrieved chunks
 - Gemini for grounded answer generation
 
-Each evaluation question was passed through the complete pipeline:
-
-```text
-Evaluation Question
-        ↓
-MiniLM Query Embedding
-        ↓
-Top-5 Retrieval
-        ↓
-Retrieved Context + Source Metadata
-        ↓
-Gemini
-        ↓
-Generated Answer
-```
+Each evaluation question was passed through the complete pipeline.
 
 Generated responses were compared against manually prepared expected answers and reviewed alongside the retrieved chunks to distinguish **retrieval failures from generation failures**.
+
+### Manual Accuracy Review
+
+Generation accuracy was evaluated through **manual response review** rather than an automated text-similarity metric.
+
+Each of the 40 answerable responses was read alongside the expected answer, retrieved chunks, and original source content. A response was marked as correct only when it accurately reflected the available evidence and answered the question without introducing unsupported information.
+
+Using this process, **35 of the 40 answerable questions were generated correctly**, resulting in a final generation accuracy of:
+
+**35 / 40 = 87.5%**
+
+The 8 unanswerable questions were evaluated separately because their expected behaviour was to abstain rather than generate an answer.
+
+Automated metrics such as BLEU were not used because they primarily measure lexical overlap between generated and reference text. For this project, manual verification provided a more meaningful assessment of whether the response was **factually accurate, grounded in the retrieved evidence, and semantically equivalent to the expected answer**, even when different wording was used.
 
 ### Unanswerable Question Handling
 
@@ -440,3 +440,52 @@ The end-to-end evaluation showed three important behaviours:
 3. **Abstention guardrails were effective** — all eight deliberately unanswerable questions were rejected rather than answered using unsupported information.
 
 Together, these results provide a measurable baseline for V1 and identify clear areas for future improvement across both retrieval and generation.
+
+## 💬 Interactive Application
+
+The final pipeline was integrated into an interactive **Streamlit application**, turning the evaluated RAG system into a usable Fiji travel assistant.
+
+Users can ask natural-language questions about Fiji and receive responses generated from the curated knowledge base. Each query runs through the same retrieval and generation pipeline evaluated in the previous sections.
+
+## 💬 Interactive Application
+
+<img width="823" height="715" alt="image" src="https://github.com/user-attachments/assets/d5f843e8-5ef3-44dc-a80c-f0a7c795dc08" />
+
+The final V1 pipeline was integrated into an interactive **Streamlit application**, turning the evaluated RAG system into a conversational Fiji travel assistant.
+
+Users can ask natural-language questions about Fiji, continue with follow-up questions, and receive responses grounded in the curated knowledge base.
+
+### How It Works
+
+When a question is submitted through the interface:
+
+1. The query is embedded using `all-MiniLM-L6-v2`.
+2. ChromaDB retrieves the **Top-5 most semantically relevant chunks**.
+3. Retrieved text and source metadata are added to the grounded generation prompt.
+4. Gemini generates a response using the retrieved evidence.
+5. The answer and its supporting sources are displayed through the Streamlit chat interface.
+
+### Conversational Memory
+
+The application maintains **conversation history within the active Streamlit session**, allowing users to ask follow-up questions without having to repeat the full context of the conversation.
+
+Previous user and assistant messages are preserved and incorporated into the conversational experience, making interactions feel closer to a travel assistant than a sequence of isolated search queries.
+
+For example, a user could first ask about travelling through the Yasawa Islands and then continue with a follow-up such as *"What about meal plans there?"* without restarting the conversation from scratch.
+
+Conversation history is session-based and is not stored as permanent user memory.
+
+### Source-Cited Responses
+
+Source attribution is preserved throughout the complete RAG pipeline.
+
+Each knowledge-base chunk retains metadata identifying its original source. When relevant chunks are retrieved, this metadata is passed alongside the text to Gemini, which is instructed to cite the sources used to support its response.
+
+This means users receive not only a generated answer, but also visibility into **where the information came from**, improving the traceability and transparency of the assistant's responses.
+
+### Grounded Travel Q&A
+
+The application supports questions across the areas covered by the knowledge base, including entry requirements, transport, destinations, weather and safety, marine activities, cultural guidance, and travel planning.
+
+When the retrieved sources do not contain enough information to answer a question — particularly for live or real-time information — the assistant is designed to communicate this limitation rather than generate an unsupported response.
+
