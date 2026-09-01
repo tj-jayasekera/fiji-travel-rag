@@ -49,3 +49,62 @@ The objective of this project was to build a travel assistant capable of:
 - Maintaining conversational context for follow-up questions
 
 Rather than focusing only on building a working chatbot, the project also evaluates the underlying retrieval and generation pipeline to understand its performance, limitations and trade-offs.
+
+
+## 🛠 Tools & Technologies
+
+- **Python** – Core development language for document processing, retrieval, generation and evaluation
+- **Sentence Transformers** – Creation of dense vector embeddings for semantic search
+- **all-MiniLM-L6-v2** – Final embedding model selected for the V1 retrieval pipeline
+- **ChromaDB** – Persistent vector database for storing and retrieving document chunks using cosine similarity
+- **Google Gemini** – LLM used to generate answers from retrieved context
+- **Streamlit** – Interactive chat interface for the final application
+- **JSON** – Storage of processed documents, chunks, evaluation questions and experiment results
+- **Git & GitHub** – Version control and project documentation
+  
+
+## 🏗 RAG Architecture
+
+The application separates retrieval from generation so that responses are grounded in the curated Fiji travel knowledge base.
+
+The V1 pipeline follows this architecture:
+
+
+                  **KNOWLEDGE PIPELINE**
+
+        23 Curated Fiji Travel Documents
+                       │
+                       ▼
+              Document Cleaning
+                       │
+                       ▼
+                  Chunking
+                       │
+                       ▼
+          MiniLM Vector Embeddings
+                       │
+                       ▼
+             ChromaDB Vector Store
+
+
+                   ** QUERY PIPELINE**
+
+                  User Question
+                       │
+                       ▼
+          MiniLM Query Embedding
+                       │
+                       ▼
+          Top-5 Semantic Retrieval
+                       │
+                       ▼
+              Retrieved Context
+                       │
+                       ▼
+              Gemini Generation
+                       │
+                       ▼
+              Grounded Response
+                       │
+                       ▼
+             Streamlit Interface
