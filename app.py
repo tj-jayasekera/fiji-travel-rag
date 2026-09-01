@@ -39,7 +39,10 @@ if user_question:
 
     with st.chat_message("assistant"):
         with st.spinner("Searching Fiji travel sources..."):
-            result = generate_answer(user_question)
+            result = generate_answer(
+                user_question,
+                conversation_history=st.session_state.messages[:-1]
+                )
 
         answer = result["answer"]
         retrieval_results = result["retrieval_results"]

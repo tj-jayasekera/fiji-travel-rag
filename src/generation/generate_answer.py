@@ -38,7 +38,7 @@ Content:
     return "\n\n".join(context_parts)
 
 
-def build_prompt(question, context):
+def build_prompt(question, context, conversation_history):
     return f"""
 You are a Fiji travel assistant.
 
@@ -54,6 +54,9 @@ Rules:
 - Do not treat time-sensitive information such as transport schedules as permanently current.
 - At the end, include a short "Sources" section listing the source titles you used.
 
+RECENT CONVERSATION:
+{conversation_history}
+
 USER QUESTION:
 {question}
 
@@ -61,26 +64,56 @@ SOURCES:
 {context}
 """.strip()
 
+def build_conversation_history(conversation_history):
+    if not conversation_history:
+        return "No previous conversation."
 
-def generate_answer(question):
-    if not GEMINI_API_KEY:
-        raise ValueError(
-            "GEMINI_API_KEY was not found. Check your .env file."
+    history_parts = []
+
+    for message in conversation_history[-6:]:
+        role = message["role"].upper()
+        content = message["content"]
+
+        history_parts.append(
+            f"{role}: {content}"
         )
 
-    # Retrieve relevant chunks
+    return "\n".join(history_parts)
+
+def generate_answer(question, conversation_history=None):
+
+    if conversation_history is None:
+
+        conversation_history = []
+
+    if not GEMINI_API_KEY:
+
+        raise ValueError(
+
+            "GEMINI_API_KEY was not found. Check your .env file."
+
+        )
+
     results = search(
+
         query=question,
+
         n_results=5
+
     )
 
     # Build context from retrieved chunks
     context = build_context(results)
 
+    history_text = build_conversation_history(
+    conversation_history
+    )
+
     # Build grounded RAG prompt
     prompt = build_prompt(
-        question,
-        context
+    question,
+    context,
+    history_text
     )
 
     # Create Gemini client
