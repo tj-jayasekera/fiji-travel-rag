@@ -183,11 +183,6 @@ Four information retrieval metrics were used:
 - **Recall@K** — the proportion of known relevant chunks successfully retrieved
 - **Mean Reciprocal Rank (MRR)** — measures how highly the first relevant result appeared in the ranking
 
-### Top-K Experiment
-
-Retrieval was evaluated at `k = 3`, `5`, `8`, and `10` to determine how many chunks should be retrieved for each user query.
-
-For each configuration, the experiment measured **Hit Rate, Precision, Recall, and MRR** across the 40 answerable questions. In addition to these aggregate metrics, the evaluation also tracked **failed questions at each K** — defined as questions where **none of the manually identified relevant chunks appeared within the Top-K retrieved results**.
 
 ### Top-K Experiment
 
