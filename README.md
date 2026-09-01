@@ -192,6 +192,7 @@ For each configuration, the experiment measured **Hit Rate, Precision, Recall, a
 
 <img width="452" height="185" alt="image" src="https://github.com/user-attachments/assets/fa8c781a-b2f0-400a-8e9d-5da9b8b71778" />
 
+
 The experiment showed a clear improvement when increasing retrieval depth from `k = 3` to `k = 5`:
 
 - **Hit Rate increased from 0.675 to 0.900**
