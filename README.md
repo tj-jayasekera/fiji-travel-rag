@@ -104,3 +104,35 @@ And when a user asks a question:
                        │
                        ▼
              Streamlit Interface
+
+
+## 📚 Knowledge Base
+
+The assistant's knowledge base was built from **23 manually curated Fiji travel documents** collected from authoritative and relevant sources. Rather than relying on unrestricted web search, the project uses a fixed corpus so that retrieved information can be traced back to known sources and evaluated consistently.
+
+The documents cover practical information a traveller may need when planning a trip to Fiji, including:
+
+- 🛂 **Entry & Travel Requirements** — visas, passports, customs, and arrival information
+- 🏝️ **Destinations & Islands** — regional and island-specific travel information
+- 🚐 **Transport** — domestic travel, ferries, buses, and inter-island connections
+- 🩺 **Health & Safety** — travel health advice, precautions, and emergency information
+- 💰 **Money & Payments** — currency, banking, and payment guidance
+- 🌦️ **Weather & Travel Conditions** — climate, seasonal considerations, and travel planning
+- 🤝 **Culture & Local Guidance** — customs, etiquette, and responsible travel information
+
+Before being added to the retrieval system, the source documents were cleaned to remove unnecessary formatting and text with little retrieval value. The cleaned content was then divided into smaller passages suitable for embedding and semantic retrieval.
+
+
+### Knowledge Base Summary
+
+| Component | V1 |
+|---|---:|
+| **Curated source documents** | 23 |
+| **Processed text chunks** | 260 |
+| **Embedding model** | `all-MiniLM-L6-v2` |
+| **Vector database** | ChromaDB |
+| **Similarity metric** | Cosine similarity |
+
+This produced a compact, domain-specific knowledge base designed specifically around **Fiji travel questions**, rather than a general-purpose collection of travel information.
+
+Each chunk retains source metadata, allowing retrieved context to remain connected to its original document and enabling the generation pipeline to produce source-grounded answers.
