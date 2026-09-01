@@ -14,3 +14,38 @@
 - [💬 Streamlit Application](#-streamlit-application)
 - [⚠️ Limitations](#️-limitations)
 - [🚀 Future Improvements](#-future-improvements)
+
+
+## 📌 Project Overview
+
+The **Fiji Travel Intelligence Assistant** is an end-to-end Retrieval-Augmented Generation (RAG) application designed to answer travel questions about Fiji using a curated knowledge base rather than relying solely on a language model's internal knowledge.
+
+The system retrieves relevant information from a collection of Fiji travel sources using semantic search, provides the retrieved context to Gemini, and generates a grounded response based only on that information.
+
+The project covers the full RAG development lifecycle, including:
+- Source collection and document processing
+- Text cleaning and chunking
+- Vector embeddings and semantic retrieval
+- Vector storage using ChromaDB
+- Retrieval experimentation and evaluation
+- LLM-based answer generation
+- Human evaluation of generated responses
+- Deployment through an interactive Streamlit chat interface
+
+The final knowledge base contains **23 curated travel documents split into 260 searchable chunks**.
+
+
+## 🎯 Project Objective
+
+Travel information is distributed across government travel advice, tourism websites, destination guides and transport resources, making it difficult to find reliable answers without searching across multiple sources.
+
+The objective of this project was to build a travel assistant capable of:
+
+- Retrieving relevant information from a curated Fiji-specific knowledge base
+- Generating useful answers grounded in retrieved source material
+- Providing transparency into the sources used to answer each question
+- Recognising when the knowledge base does not contain enough information to answer reliably
+- Avoiding fabricated answers for real-time questions such as current weather, hotel prices, ferry availability and live transport status
+- Maintaining conversational context for follow-up questions
+
+Rather than focusing only on building a working chatbot, the project also evaluates the underlying retrieval and generation pipeline to understand its performance, limitations and trade-offs.
