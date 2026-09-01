@@ -69,38 +69,38 @@ The application separates retrieval from generation so that responses are ground
 
 The V1 pipeline follows this architecture:
 
-        23 Curated Fiji Travel Documents
-                       │
-                       ▼
-              Document Cleaning
-                       │
-                       ▼
-                  Chunking
-                       │
-                       ▼
-          MiniLM Vector Embeddings
-                       │
-                       ▼
-             ChromaDB Vector Store
+           ```mermaid
 
+flowchart LR
 
+    subgraph KB["Knowledge Base Preparation"]
 
-                  User Question
-                       │
-                       ▼
-          MiniLM Query Embedding
-                       │
-                       ▼
-          Top-5 Semantic Retrieval
-                       │
-                       ▼
-              Retrieved Context
-                       │
-                       ▼
-              Gemini Generation
-                       │
-                       ▼
-              Grounded Response
-                       │
-                       ▼
-             Streamlit Interface
+        A["23 Curated<br/>Travel Documents"] --> B["Text Cleaning"]
+
+        B --> C["Chunking<br/>260 Chunks"]
+
+        C --> D["MiniLM<br/>Embeddings"]
+
+        D --> E[("ChromaDB<br/>Vector Store")]
+
+    end
+
+    subgraph RAG["RAG Query Pipeline"]
+
+        F["User Question"] --> G["MiniLM<br/>Query Embedding"]
+
+        G --> H["Semantic Search<br/>Top-K = 5"]
+
+        E --> H
+
+        H --> I["Retrieved<br/>Context"]
+
+        I --> J["Gemini"]
+
+        F --> J
+
+        J --> K["Grounded<br/>Answer"]
+
+        K --> L["Streamlit<br/>Chat Interface"]
+
+    end
