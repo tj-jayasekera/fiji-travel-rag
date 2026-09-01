@@ -172,10 +172,10 @@ A custom evaluation set of **48 Fiji travel questions** was created to test the 
 - **40 answerable questions** with relevant information present in the knowledge base
 - **8 unanswerable questions** where the required information was not available in the corpus
 
-For example:
+For each answerable question, the relevant chunk IDs were manually identified and cross-checked against the source documents. These chunk-level relevance labels were then used as ground truth for evaluating retrieval performance.
+
 <img width="846" height="191" alt="image" src="https://github.com/user-attachments/assets/87b46b70-1f5c-4386-889b-77a5ddc53a5f" />
 
-For each answerable question, the relevant chunk IDs were manually identified and cross-checked against the source documents. These chunk-level relevance labels were then used as ground truth for evaluating retrieval performance.
 
 ### Evaluation Metrics
 
