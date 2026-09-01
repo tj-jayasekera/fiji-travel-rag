@@ -126,7 +126,7 @@ Before being added to the retrieval system, the source documents were cleaned to
 ### Knowledge Base Summary
 
 
-|---|---:|
+
 | **Curated source documents** | 23 |
 | **Processed text chunks** | 260 |
 | **Embedding model** | `all-MiniLM-L6-v2` |
