@@ -108,7 +108,7 @@ And when a user asks a question:
 
 ## 📚 Knowledge Base
 
-The assistant's knowledge base was built from **23 manually curated Fiji travel documents** collected from authoritative and relevant sources. Rather than relying on unrestricted web search, the project uses a fixed corpus so that retrieved information can be traced back to known sources and evaluated consistently.
+The assistant's knowledge base was built from **23 manually curated Fiji travel documents** collected from authoritative and relevant sources (listed in data/sources.json). Rather than relying on unrestricted web search, the project uses a fixed corpus so that retrieved information can be traced back to known sources and evaluated consistently.
 
 The documents cover practical information a traveller may need when planning a trip to Fiji, including:
 
