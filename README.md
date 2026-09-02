@@ -9,6 +9,14 @@ Built with **Python · Sentence Transformers · ChromaDB · Gemini · Streamlit*
 
 <img width="823" height="715" alt="image" src="https://github.com/user-attachments/assets/d5f843e8-5ef3-44dc-a80c-f0a7c795dc08" />
 
+### 📊 V1 Results
+
+| Knowledge Base | Retrieval Hit Rate@5 | Generation Accuracy | Unanswerable Abstention |
+
+|---|---:|---:|---:|
+
+| 23 docs · 260 chunks | 90.0% | 87.5% | 100% |
+
 ## 📚 Table of Contents
 
 - [📌 Project Overview](#-project-overview)
@@ -408,12 +416,6 @@ Together, these results provide a measurable baseline for V1 and identify clear 
 
 ## 💬 Interactive Application
 
-The final pipeline was integrated into an interactive **Streamlit application**, turning the evaluated RAG system into a usable Fiji travel assistant.
-
-Users can ask natural-language questions about Fiji and receive responses generated from the curated knowledge base. Each query runs through the same retrieval and generation pipeline evaluated in the previous sections.
-
-## 💬 Interactive Application
-
 <img width="823" height="715" alt="image" src="https://github.com/user-attachments/assets/d5f843e8-5ef3-44dc-a80c-f0a7c795dc08" />
 
 The final V1 pipeline was integrated into an interactive **Streamlit application**, turning the evaluated RAG system into a conversational Fiji travel assistant.
@@ -453,4 +455,36 @@ This means users receive not only a generated answer, but also visibility into *
 The application supports questions across the areas covered by the knowledge base, including entry requirements, transport, destinations, weather and safety, marine activities, cultural guidance, and travel planning.
 
 When the retrieved sources do not contain enough information to answer a question — particularly for live or real-time information — the assistant is designed to communicate this limitation rather than generate an unsupported response.
+
+## ⚠️ Limitations
+
+The V1 system has several limitations that affect the scope and reliability of its responses:
+
+- **Static knowledge base** — The assistant relies on 23 curated documents and cannot access live information such as hotel prices, weather, ferry delays, or current availability.
+
+- **Retrieval failures** — The final Top-5 configuration failed to retrieve relevant evidence for **4 of 40 answerable evaluation questions**, which can lead to incomplete downstream responses.
+
+- **Generation errors** — Correct retrieval does not always guarantee a correct answer. In one evaluation case, Gemini abstained despite the relevant source being successfully retrieved.
+
+- **Limited source coverage** — The knowledge base covers common Fiji travel topics but does not contain every destination, activity, accommodation provider, or travel scenario.
+
+- **Semantic-only retrieval** — V1 uses dense vector similarity without hybrid keyword search, query rewriting, or reranking, limiting performance on some exact or poorly aligned queries.
+
+- **Session-only memory** — Conversation context is maintained during the active Streamlit session but is not retained between visits.
+
+## 🚀 Future Improvements — V2
+
+V1 establishes an evaluated RAG baseline using a fixed, curated Fiji travel knowledge base. **V2 will build on this foundation by exploring a hybrid travel intelligence system that can combine curated knowledge with live internet search.**
+
+A key goal is to allow the assistant to determine when a question can be answered from the existing knowledge base and when fresh information is required — enabling support for queries involving current weather, transport updates, availability, changing travel requirements, and other time-sensitive information.
+
+Planned areas of exploration include:
+
+- **Live web retrieval** — Search for current information when a query cannot be reliably answered from the static knowledge base.
+- **Intelligent query routing** — Decide whether a question should use curated RAG retrieval, live web search, or both.
+- **Hybrid retrieval & reranking** — Combine semantic and keyword search with improved ranking of retrieved evidence.
+- **Expanded knowledge base** — Add further authoritative Fiji travel sources and destination coverage.
+- **Improved conversational retrieval** — Rewrite context-dependent follow-up questions into stronger standalone search queries.
+
+The goal for V2 is to evolve the project from a static RAG assistant into a more capable **Fiji travel intelligence system that can reason across both curated and up-to-date information.**
 
