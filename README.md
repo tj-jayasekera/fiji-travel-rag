@@ -12,9 +12,7 @@ Built with **Python · Sentence Transformers · ChromaDB · Gemini · Streamlit*
 ### 📊 V1 Results
 
 | Knowledge Base | Retrieval Hit Rate@5 | Generation Accuracy | Unanswerable Abstention |
-
 |---|---:|---:|---:|
-
 | 23 docs · 260 chunks | 90.0% | 87.5% | 100% |
 
 ## 📚 Table of Contents
