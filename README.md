@@ -1,6 +1,13 @@
+
 # 🌴 Fiji Travel Intelligence Assistant
 
-ACCESS THE APP HERE -> https://fiji-travel-intelligence.streamlit.app/ 
+> A Retrieval-Augmented Generation (RAG) travel assistant that answers Fiji travel questions using a curated, source-grounded knowledge base.
+
+### 🚀 [Launch the Live App](https://fiji-travel-intelligence.streamlit.app/)
+
+Built with **Python · Sentence Transformers · ChromaDB · Gemini · Streamlit**
+
+<img width="823" height="715" alt="image" src="https://github.com/user-attachments/assets/d5f843e8-5ef3-44dc-a80c-f0a7c795dc08" />
 
 ## 📚 Table of Contents
 
@@ -298,50 +305,6 @@ This allows the final response to remain connected to the curated travel documen
 
 The result is a generation pipeline designed around a core RAG principle: **retrieve evidence first, then generate an answer from that evidence.**
 
-
-## 📊 Generation Evaluation
-
-After establishing the final retrieval configuration, the complete RAG pipeline was evaluated to determine whether the retrieved evidence was being converted into **accurate, grounded, and useful travel responses**.
-
-While retrieval evaluation measures whether the correct information can be found, generation evaluation focuses on the quality of the **final answer produced from that information**.
-
-### Evaluation Dataset
-
-The same **48-question evaluation set** was used to test the end-to-end RAG pipeline:
-
-- **40 answerable questions** — the knowledge base contains sufficient information to produce an answer
-- **8 unanswerable questions** — the knowledge base intentionally does not contain sufficient information
-
-Including unanswerable questions was important for testing whether the assistant could recognise the limits of its knowledge base rather than generating unsupported information.
-
-### Evaluation Approach
-
-Each question was passed through the complete pipeline using the final retrieval configuration:
-
-```text
-Evaluation Question
-        ↓
-MiniLM Query Embedding
-        ↓
-Top-5 Retrieval
-        ↓
-Retrieved Context + Metadata
-        ↓
-Gemini
-        ↓
-Generated Answer
-        ↓
-Generation Evaluation
-```
-
-The generated responses were then evaluated separately from retrieval performance. This made it possible to assess not only whether the system found relevant evidence, but whether the generation model **used that evidence correctly and remained grounded in the supplied context**.
-
-For answerable questions, the evaluation focused on whether the generated response correctly addressed the question using the retrieved evidence.
-
-For unanswerable questions, the expected behaviour was different: the assistant should recognise that the supplied sources were insufficient and **decline to provide an unsupported answer**.
-
-This provides an end-to-end evaluation of the two behaviours required from the assistant: **answer when supported by the knowledge base, and abstain when it is not.**
-
 ## 📊 Generation Evaluation
 
 After selecting the final retrieval configuration, the complete RAG pipeline was evaluated using the same **48-question evaluation set**.
@@ -361,6 +324,8 @@ The final V1 pipeline used:
 - Gemini for grounded answer generation
 
 Each evaluation question was passed through the complete pipeline.
+
+Generation responses can be found at `evaluation/results.json`.
 
 Generated responses were compared against manually prepared expected answers and reviewed alongside the retrieved chunks to distinguish **retrieval failures from generation failures**.
 
