@@ -470,7 +470,7 @@ The V1 system has several limitations that affect the scope and reliability of i
 
 - **Session-only memory** — Conversation context is maintained during the active Streamlit session but is not retained between visits.
 
-## 🚀 Future Improvements — V2
+## 🚀 Future Improvements
 
 V1 establishes an evaluated RAG baseline using a fixed, curated Fiji travel knowledge base. **V2 will build on this foundation by exploring a hybrid travel intelligence system that can combine curated knowledge with live internet search.**
 
