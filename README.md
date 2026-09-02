@@ -1,5 +1,7 @@
 # 🌴 Fiji Travel Intelligence Assistant
 
+ACCESS THE APP HERE -> https://fiji-travel-intelligence.streamlit.app/ 
+
 ## 📚 Table of Contents
 
 - [📌 Project Overview](#-project-overview)
