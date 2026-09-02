@@ -1,12 +1,12 @@
 import os
 
+import streamlit as st
 from dotenv import load_dotenv
 from google import genai
+from google.genai import errors
 
 from src.retrieval.search import search
 
-
-import streamlit as st
 
 load_dotenv()
 
@@ -16,6 +16,7 @@ if not GEMINI_API_KEY:
     GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY")
 
 MODEL_NAME = "gemini-3.6-flash"
+
 
 def build_context(results):
     documents = results["documents"][0]
@@ -68,6 +69,7 @@ SOURCES:
 {context}
 """.strip()
 
+
 def build_conversation_history(conversation_history):
     if not conversation_history:
         return "No previous conversation."
@@ -84,40 +86,34 @@ def build_conversation_history(conversation_history):
 
     return "\n".join(history_parts)
 
+
 def generate_answer(question, conversation_history=None):
-
     if conversation_history is None:
-
         conversation_history = []
 
     if not GEMINI_API_KEY:
-
         raise ValueError(
-
-            "GEMINI_API_KEY was not found. Check your .env file."
-
+            "GEMINI_API_KEY was not found. "
+            "Check your .env file or Streamlit secrets."
         )
 
     results = search(
-
         query=question,
-
         n_results=5
-
     )
 
     # Build context from retrieved chunks
     context = build_context(results)
 
     history_text = build_conversation_history(
-    conversation_history
+        conversation_history
     )
 
     # Build grounded RAG prompt
     prompt = build_prompt(
-    question,
-    context,
-    history_text
+        question,
+        context,
+        history_text
     )
 
     # Create Gemini client
@@ -126,10 +122,29 @@ def generate_answer(question, conversation_history=None):
     )
 
     # Generate answer
-    response = client.models.generate_content(
-        model=MODEL_NAME,
-        contents=prompt
-    )
+    try:
+        response = client.models.generate_content(
+            model=MODEL_NAME,
+            contents=prompt
+        )
+
+    except errors.ServerError:
+        return {
+            "answer": (
+                "The AI service is temporarily unavailable. "
+                "Please try your question again in a moment."
+            ),
+            "retrieval_results": results
+        }
+
+    except errors.APIError:
+        return {
+            "answer": (
+                "The AI service could not complete the request. "
+                "Please try again shortly."
+            ),
+            "retrieval_results": results
+        }
 
     text_parts = []
 
