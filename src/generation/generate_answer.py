@@ -6,12 +6,16 @@ from google import genai
 from src.retrieval.search import search
 
 
+import streamlit as st
+
 load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-MODEL_NAME = "gemini-3.6-flash"
+if not GEMINI_API_KEY:
+    GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY")
 
+MODEL_NAME = "gemini-3.6-flash"
 
 def build_context(results):
     documents = results["documents"][0]
