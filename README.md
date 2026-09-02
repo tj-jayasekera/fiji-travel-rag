@@ -325,8 +325,6 @@ The final V1 pipeline used:
 
 Each evaluation question was passed through the complete pipeline.
 
-Generation responses can be found at `evaluation/results.json`.
-
 Generated responses were compared against manually prepared expected answers and reviewed alongside the retrieved chunks to distinguish **retrieval failures from generation failures**.
 
 ### Manual Accuracy Review
